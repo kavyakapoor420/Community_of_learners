@@ -412,6 +412,38 @@ app.use((error, req, res, next) => {
     res.status(500).json({ error: error.message });
 });
 
+// Add this route with your other admin routes
+app.get('/admin/videos/:id/students', authenticateToken, requireAdmin, async (req, res) => {
+    try {
+        const videoId = req.params.id;
+
+        const answers = await Answer.find({ videoId })
+            .populate('userId', 'name email')
+            .sort({ uploadedAt: -1 });
+
+        const studentsMap = new Map();
+        
+        answers.forEach(answer => {
+            const studentId = answer.userId._id.toString();
+            if (!studentsMap.has(studentId) || 
+                studentsMap.get(studentId).uploadedAt < answer.uploadedAt) {
+                studentsMap.set(studentId, {
+                    name: answer.userId.name,
+                    email: answer.userId.email,
+                    uploadedAt: answer.uploadedAt
+                });
+            }
+        });
+
+        const students = Array.from(studentsMap.values());
+        res.json({ students });
+    } catch (error) {
+        console.error('Get students error:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
+
+
 // Start server
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
