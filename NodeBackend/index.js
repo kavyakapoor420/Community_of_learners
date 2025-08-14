@@ -11,19 +11,18 @@ const bcrypt = require('bcryptjs');
 const app = express();
 const PORT = 5000;
 const JWT_SECRET = 'your-super-secret-jwt-key-12345';
-const MONGODB_URI = 'mongodb://localhost:27017/learning-community';
+const MONGODB_URI1 = 'mongodb://localhost:27017/learning-community';
+const MONGODB_URI='mongodb+srv://kavyakapoor413:Helloworld@cluster01.4zpagwq.mongodb.net/KavyaGPT?retryWrites=true&w=majority&appName=Cluster01'
 
-// Middleware
 app.use(cors());
 app.use(express.json());
 app.use('/uploads', express.static('uploads'));
 
-// Create uploads directory if it doesn't exist
+
 if (!fs.existsSync('uploads')) {
     fs.mkdirSync('uploads');
 }
 
-// MongoDB Connection
 mongoose.connect(MONGODB_URI);
 
 // Email transporter (using Gmail - replace with your credentials)
@@ -402,7 +401,7 @@ app.get('/admin/videos', authenticateToken, requireAdmin, async (req, res) => {
     }
 });
 
-// Error handling middleware
+
 app.use((error, req, res, next) => {
     if (error instanceof multer.MulterError) {
         if (error.code === 'LIMIT_FILE_SIZE') {
@@ -444,9 +443,9 @@ app.get('/admin/videos/:id/students', authenticateToken, requireAdmin, async (re
 });
 
 
-// Start server
+
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
-    console.log(`MongoDB connected to: ${MONGODB_URI}`);
+   
 });
 
