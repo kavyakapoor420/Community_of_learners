@@ -3,21 +3,20 @@ const jwt=require('jsonwebtoken')
 
 const JWT_SECRET='abcd'
 
-const auth=(req,res,next)=>{
+const authenticateToken = (req, res, next) => {
+    const authHeader = req.headers['authorization'];
+    const token = authHeader && authHeader.split(' ')[1];
 
-    const token=req.header("Authorization")?.replace("Bearer",'')
-
-    if(!token){
-        return res.status(401).json({msg:'no token provided'})
+    if (!token) {
+        return res.status(401).json({ error: 'Access token required' });
     }
 
-    try{
-        const decoded=jwt.verify(token,JWT_SECRET)
-        req.user=decoded 
-        next() 
-
-    }catch(err){
-        res.status(401).json({msg:'invalid token'})
-    }
-}
+    jwt.verify(token, JWT_SECRET, (err, user) => {
+        if (err) {
+            return res.status(403).json({ error: 'Invalid or expired token' });
+        }
+        req.user = user;
+        next();
+    });
+};
 
