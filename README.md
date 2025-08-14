@@ -9,12 +9,18 @@ The **Community of Learners** platform is a MERN stack web application designed 
 This platform ensures structured learning, interactive feedback, and easy content management for both roles.
 
 ---
-##  Access the frontend using this link : [https://community-of-learners.vercel.app/](Community_learner_assignment_frontend)
+##  Access the frontend using this link : [Community_learner_assignment_frontend](https://community-of-learners.vercel.app/)
+
 
 
 <br/>
 
-##  Access the frontend using this link : [https://community-of-learners.onrender.com/](Community_learner_assignment_backend_deplyed_on_render)
+##  Access the frontend using this link : [Community_learner_assignment_backend_deplyed_on_render](https://community-of-learners.onrender.com/)
+
+
+---
+##  Screenshots
+
 
 ---
 
@@ -82,6 +88,5 @@ EMAIL_PASS=your_app_password
 
 ---
 
-##  Screenshots
 
 
