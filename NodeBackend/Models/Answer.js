@@ -24,7 +24,21 @@ const answerSchema=new mongoose.Schema({
         type:String,
         required:true
     },
-    comments:commentSchema
+    comments:[
+        {
+            comment:{
+                type:String,required:true
+            },
+            commentedBy:{
+                type:mongoose.Schema.Types.ObjectId,
+                ref:"User"
+            },
+            commentedAt:{
+                type:Date,
+                default:Date.now 
+            }
+        }
+    ]
 })
 
 module.exports=mongoose.model("Answer",answerSchema)

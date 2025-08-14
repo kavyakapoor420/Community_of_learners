@@ -17,6 +17,10 @@ const videoSchema=new mongoose.Schema({
     postedBy:{
         type:mongoose.Schema.Types.ObjectId,
         ref:"User"
+    },
+    postedAt:{
+        type:Date,
+        default:Date.now 
     }
 })
 
