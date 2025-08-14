@@ -33,7 +33,7 @@
 import React, { useState, useEffect } from 'react';
 
 // const API_BASE_URL = 'http://localhost:5000';
-const API_BASE_URL='https://community-of-learners.onrender.com/'
+const API_BASE_URL='https://community-of-learners.onrender.com'
 
 function App() {
   const [user, setUser] = useState(null);
