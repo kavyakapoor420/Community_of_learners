@@ -9,6 +9,14 @@ The **Community of Learners** platform is a MERN stack web application designed 
 This platform ensures structured learning, interactive feedback, and easy content management for both roles.
 
 ---
+##  Access the frontend using this link : [https://community-of-learners.vercel.app/](Community_learner_assignment_frontend)
+
+
+<br/>
+
+##  Access the frontend using this link : [https://community-of-learners.onrender.com/](Community_learner_assignment_backend_deplyed_on_render)
+
+---
 
 ##  Features
 ### **Admin**
@@ -30,7 +38,7 @@ This platform ensures structured learning, interactive feedback, and easy conten
 - **Backend:** Node.js, Express.js  
 - **Database:** MongoDB (Mongoose ODM)  
 - **Authentication:** JWT + Email OTP (Nodemailer)  
-- **File Uploads:** Multer + (AWS S3 / Local Storage)  
+- **File Uploads:** Multer + Local Storage (for temporary uploads)
 
 ---
 
